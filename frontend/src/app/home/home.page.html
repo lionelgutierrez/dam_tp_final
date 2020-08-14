@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Listado de Sensores
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+ 
+
+  <div id="container">
+  <ion-grid>  
+  <ion-row class="ion-align-items-center">
+    <ion-col size-md='6' offset-md='3' size-sm='8' offset-sm='2' size-xs='12'>
+    <ion-list-header lines="full" color='primary'>
+    <ion-label>Listado Sensores</ion-label>
+    </ion-list-header>
+    <ion-list>                                      
+    <ion-item *ngFor="let d of listadoDispositivo" routerLink="/dispositivo/{{d.dispositivoId}}" detail>
+    <!--
+      <ion-thumbnail slot="start">
+        <img src="../../assets/icon/temp.png">
+      </ion-thumbnail>
+    -->
+      <ion-avatar slot="start">
+        <ion-icon size="large" name="thermometer"></ion-icon>
+    </ion-avatar>      
+      <ion-label>
+        <!--<h2>Sensor <ion-badge slot="end">{{d.dispositivoId}}</ion-badge></h2>-->
+        <h1>Sensor {{d.dispositivoId}} - Nombre: {{d.nombre}}</h1>
+        <p><ion-icon name="location-outline"></ion-icon>Ubicacion: {{d.ubicacion}} </p>
+        <!--  - IDElectrovalvula: <ion-badge color="dark" slot="end">{{d.electrovalvulaId}}</ion-badge></p>
+
+        <ion-icon name="chevron-forward-outline"></ion-icon>-->
+      </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-col>
+  </ion-row>
+</ion-grid>    
+</div>
+</ion-content>
+

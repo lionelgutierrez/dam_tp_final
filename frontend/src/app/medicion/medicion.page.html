@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <ion-label><ion-icon name="bar-chart-outline"></ion-icon> Listado Mediciones para el sensor {{idDispositivo}}</ion-label>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+ 
+  <BR><BR>
+  <ion-grid>  
+  <ion-row class="ion-align-items-center">
+    <ion-col appTablaDirectiva appCeldaDirectiva size-md='2' offset-md='1' size-sm='3'>Nº Medicion </ion-col>
+    <ion-col appTablaDirectiva appCeldaDirectiva size-md='4' size-sm='5'>Fecha </ion-col>
+    <ion-col appTablaDirectiva appCeldaDirectiva size-md='4' size-sm='4'>Valor </ion-col>
+  </ion-row>
+
+
+  <ion-row class="ion-align-items-center" *ngFor="let d of listadoMediciones">
+    <ion-col appCeldaDirectiva size-md='2' offset-md='1' size-sm='3'>{{d.medicionId}}</ion-col>
+    <ion-col appCeldaDirectiva size-md='4' size-sm='5'>{{d.fecha | fechasPipe}} </ion-col>
+    <ion-col appCeldaDirectiva size-md='4' size-sm='4'>{{d.valor}} </ion-col>
+  </ion-row>
+
+  <ion-row class="ion-align-items-center">
+    <ion-col size-md='3' offset-md='1' size-sm='4' size-xs='12'>
+      <ion-button size="small" routerLink="/dispositivo/{{idDispositivo}}">Volver a Datos Sensor</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>    
+</ion-content>
+
+

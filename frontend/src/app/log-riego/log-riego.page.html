@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <ion-label><ion-icon name="bar-chart-outline"></ion-icon> Log de Riegos para el sensor {{idDispositivo}} - Datos Electrovalvula</ion-label>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+ 
+  <BR><BR>
+    <!-- -->
+  <ion-grid *ngIf="listadoLogRiego.length>0">  
+  <ion-row class="ion-align-items-center"><!--class="titulo celda"-->
+    <ion-col appTablaDirectiva appCeldaDirectiva size-md='4' offset-md='2' size-sm='5'offset-sm='1'>Fecha </ion-col>
+    <ion-col appTablaDirectiva appCeldaDirectiva size-md='4' size-sm='5'>Apertura </ion-col>
+  </ion-row>
+
+
+  <ion-row class="ion-align-items-center" *ngFor="let d of listadoLogRiego">
+    <ion-col appCeldaDirectiva size-md='4' offset-md='2' size-sm='5'offset-sm='1'>{{d.fecha | fechasPipe}}</ion-col>
+    <ion-col *ngIf="d.apertura == 0"  appCeldaDirectiva size-md='4' size-sm='5'>{{d.apertura | aperturaPipe}} <img src='../../assets/icon/off.png'></ion-col>
+    <ion-col *ngIf="d.apertura > 0"  appCeldaDirectiva size-md='4' size-sm='5'>{{d.apertura | aperturaPipe}} <img src='../../assets/icon/on.png'></ion-col>
+  </ion-row>
+
+  <ion-row class="ion-align-items-center">
+    <ion-col size-md='3' offset-md='2' size-sm='4' offset-sm='1' size-xs='12'>
+      <ion-button size="small" routerLink="/dispositivo/{{idDispositivo}}">Volver a Datos Sensor</ion-button>
+    </ion-col>
+  </ion-row>
+
+</ion-grid>    
+
+<ion-grid *ngIf="listadoLogRiego.length==0">  
+  <ion-row class="ion-align-items-center">
+    <ion-col size-md='3' offset-md='2' size-sm='4' offset-sm='1' size-xs='12'>
+  <H2>Sin datos de Log para la electrovalvula</H2>
+  <ion-button size="small" routerLink="/dispositivo/{{idDispositivo}}">Volver a Datos Sensor</ion-button>
+</ion-col>
+</ion-row>
+</ion-grid>  
+
+
+</ion-content>

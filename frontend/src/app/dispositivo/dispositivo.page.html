@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Datos Sensor Nº" {{disp.dispositivoId}}
+      <BR><ion-icon name="location-outline"></ion-icon>Ubicacion: {{disp.ubicacion}} 
+    </ion-title>
+    
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="container">
+    <ion-grid>  
+      <ion-row class="ion-align-items-center">
+        <ion-col size-md='4' offset-md='4' size-sm='6' offset-sm='3' size-xs='12'>
+          <div id="highcharts" style="width:100%; height:300px;"></div>
+          <!--<ion-button *ngIf="valorObtenido>=30" expand="block" (click)="accionarElectrovalvula()">{{mensajeBoton}}</ion-button>-->
+          <ion-button *ngIf="valorObtenido>=30 && estadoElectrovalvula == 0" color="success" expand="block" (click)="accionarElectrovalvula()">ABRIR ELECTROVALVULA</ion-button>
+          <ion-button *ngIf="valorObtenido>=30 && estadoElectrovalvula > 0" color="danger" expand="block" (click)="accionarElectrovalvula()">CERRAR ELECTROVALVULA</ion-button>
+          <ion-button expand="block" fill="outline" routerLink="/medicion/{{disp.dispositivoId}}" >VER TODAS lAS MEDICIONES</ion-button>
+          <ion-button expand="block" fill="outline" routerLink="/log-riego/{{disp.electrovalvulaId}}/{{disp.dispositivoId}}" >VER LOG RIEGOS</ion-button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-align-items-center">
+        <ion-col size-md='4' offset-md='4' size-sm='6' offset-sm='3' size-xs='12'>
+          <ion-button expand="block"  routerLink="/home">Volver a Listado sensores</ion-button>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>      
+    
+    
+    <!--
+    <IonListHeader lines="inset">
+      <IonLabel>Detalle del sensor</IonLabel>
+    </IonListHeader>
+    <ion-list>                                      
+    <ion-item>
+      <ion-label>
+        <h2>DispositoID: <ion-badge slot="end">{{disp.dispositivoId}}</ion-badge></h2>
+        <h3>Nombre: {{disp.nombre}}</h3>
+        <p>Ubicacion: {{disp.ubicacion}} - IDElectrovalvula: <ion-badge color="dark" slot="end">{{disp.electrovalvulaId}}</ion-badge></p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  -->
+  </div>
+</ion-content>
