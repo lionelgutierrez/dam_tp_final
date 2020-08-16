@@ -22,9 +22,3 @@ app.use("/logRiego",routerLogRiego);
 app.listen(PORT,function(req,res){
     console.log("App levantada");
 })
-
-//https://github.com/ernesto-g/daw/tree/master/scripts_docker
-//$ ./start_mysql.sh mysql-net ./db/dumps ./db/data
-//./run_phpadmin.sh mysql-net mysql-server 8085
-//./serve_node_app_net.sh "$PWD" index.js 8000 mysql-net
-//docker stop $(docker ps -a -q)
