@@ -69,7 +69,25 @@ Si la electroválvula todavía no ha sido accionada, el sistema lo indica. Adem�
 
 # Correr la aplicación
 La aplicación cuenta con un backend y un frontend.
-Para poder ejecutar la misma se deben realizar 2 pasos:
+Existen 2 opciones para se ejecución:
+
+## Opción  1 - Script de bash
+Para la primer opción basta con ejecutar el script que se encuentra en el directorio principal, llamado "script.sh".
+Parado dentro del directorio principal del sistema ejecutar:
+
+```sh
+./script.sh
+```
+
+El mismo levanta en primer instancia el frontend, espera un tiempo de 20 segundos para asegurar que el mismo levante, y luego levanta el backend.
+Esto levanta la aplicación en  ​[http://localhost:8100/home](http://localhost:8100/home), mostrando inicialmente el listado de sensores.
+<BR>
+En la primer ejecución, dado que se crea la base de datos, el frontend puede levantarse antes que tengamos el backend listo. En este caso se debe refrescar la pantalla principal del sistema en el navegador o reejecutar el script. Sino se puede utilizar la opción 2 para levantar el sistema.
+
+
+## Opción  2 - comando docker-compose y Ionic Serve
+
+Para poder ejecutar la aplicación se deben realizar 2 pasos:
 <BR><BR>
 1- Ingresar a la carpeta backend de la solución y ejecutar el siguiente comando:
 ```sh
@@ -88,6 +106,16 @@ Esto levanta la aplicación en  ​[http://localhost:8100/home](http://localhost
 <BR>
 
 ## Para detener toda la aplicación se deberá:
+
+### A - Si levantó la aplicación con el script 
+1 - Cortar la ejecucición del script con Ctrl + C
+<BR>
+2 - Para asegurar que los contenedores de docker se paran y eiliminan completamente, ingresar en la carpeta backend y ejecutar el comando siguiente.
+
+```sh
+docker-compose down
+```
+### B - Si levantó la aplicación con docker-compose y ionic serve:
 
 <BR>
 1- en la carpeta frontend finalizar con Crtl+C la ejecución del comando ionic serve
